@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+
+
+{% block 'page_title' %}
+<div class="content-wrapper">
+  <h1 class="">Welcome to RV page</h1>
+  <p class="">you can choose here the type of an oppointment</p>
+</div>
+{% endblock %}
+
+
+{% block 'content' %}
+
+<section id="" class="sec1 sec">
+
+  <div class="sub1_sec1 box">
+    <div class="content-wrapper box">
+      <h1>make appointment</h1>
+      <p>you can make appointment for tomorrow or you can as well choose
+        the day you want to make your appointment</p>
+
+      <div class="">
+        <a href="{% url 'rv_view' 'tommorw_ap' %} " class="btn color1">tomorrow</a>
+        <a href="{% url 'rv_view' 'date_ap' %}" class="btn color1">choose a date </a>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="sub2_sec1">
+    <img src="{% static 'images/b1.svg' %}" alt="">
+
+  </div>
+</section>
+
+<!-- WARNING:  -->
+
+{% endblock %}

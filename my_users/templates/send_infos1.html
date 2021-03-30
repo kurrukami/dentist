@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+
+{% block 'page_title' %}
+<div class="container">
+  <h1 class="title">home page</h1>
+  <p class="subtitle">feel free and join us now</p>
+</div>
+{% endblock %}
+
+
+{% block 'content' %}
+
+<section class="hero is-medium is-dark is-bold p-6">
+  <div class="hero-body">
+    <div class="columns is-centered">
+      <div class="column ">
+        <div class="container mx-6">
+          <h1 class="title">
+            Here We Go !!
+          </h1>
+          <h2 class="subtitle">
+            get started with our managment <strong>website</strong>
+          </h2>
+          <a class="button is-black" href="{% url 'send_infos' %}">
+            <span>get started</span>
+          </a>
+        </div>
+      </div>
+      <div class="column">
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+{% endblock %}

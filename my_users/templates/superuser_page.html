@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block 'page_title' %}
+<div class="container">
+  <div class="container">
+    <h1 class="title"><strong>superuser</strong> page</h1>
+    <p class="subtitle">u have power here</p>
+  </div>
+</div>
+{% endblock %}
+
+
+
+{% block 'content' %}
+<div class="hero-body">
+  <h1 class="title">welcome {{request.user.username}}</h1>
+  <p class="subtitle">power</p>
+<br>
+</div>
+{% endblock %}

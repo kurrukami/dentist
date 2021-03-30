@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block 'page_title' %}
+<div class="content-wrapper">
+  <h1 class=""><strong>login</strong> page</h1>
+  <p class="">log in and experience our great site </p>
+</div>
+
+{% endblock %}
+
+{% block 'content' %}
+
+<section id="" class="sec1 sec">
+
+  <div class="sub2_sec1 box">
+    <div class="content-wrapper box">
+      <form class="" action="" method="POST">
+        {% csrf_token %}
+        {{form.username}}
+        {{form.password}}
+
+        <button class="btn color1" type="submit" name="button">log in</button>
+
+      </form>
+
+    </div>
+  </div>
+
+  <div class="sub1_sec1 ">
+    <img src="{% static 'images/s5.svg' %}" alt="">
+
+  </div>
+
+</section>
+
+
+
+
+
+
+
+{% endblock %}

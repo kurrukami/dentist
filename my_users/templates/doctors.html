@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block 'page_title' %}
+<div class="content-wrapper">
+  <h1 class=""><strong>admin</strong> page</h1>
+  <p class="">welcome to admin page </p>
+</div>
+{% endblock %}
+
+
+
+{% block 'content' %}
+
+<section class="add_patient sec">
+  <div class="patient">
+    <div class="center">
+
+      <h1>all doctors</h1>
+    </div>
+    <div class="align push">
+      <a href="{% url 'home' 'home'  %}" class="cellule cellule-btn"> go back</a>
+
+    </div>
+  </div>
+</section>
+<!-- WARNING:  -->
+<section id="grid2" class="sec2 sec">
+  <div class="sub1_sec2">
+    {% for x in smtg %}
+    <div class="patient">
+      <div class="nav">
+        <div class="cellule ">
+          {{x.username}}
+        </div>
+        <div class="cellule ">
+          {{x.phone_num}}
+        </div>
+        <div class="cellule ">
+          {{x.email}}
+        </div>
+        <div class="cellule">
+          {{x.get_created_time}}
+        </div>
+        <div class="cellule">
+          {{x.get_last_login}}
+        </div>
+      </div>
+      <div class="nav push">
+        <a href="{% url 'delete_doctor_real' x.pk %}" class="cellule cellule-btn">delete</a>
+      </div>
+    </div>
+    {% endfor%}
+
+  </div>
+  <div class="sub2_sec2">
+
+  </div>
+
+</section>
+
+<!-- WARNING:  -->
+
+
+{% endblock %}

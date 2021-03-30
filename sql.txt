@@ -1,0 +1,36 @@
+
+
+lookup cours
+
+entry.objects.get(id__exact=14)
+exact ==> select ... where ...
+
+entry.object.get(name__iexact)
+select ... where name ilike 'beat lo'
+/return querys thts have d exact alphabet no matter if they upper or smtg
+
+entry.objects.get(name__contains='lee')
+select .. where name like '%lee%'
+/qs tht contains lee wtvr its position
+
+entry.objects.get(id__in=[1,5,3])
+select ... where id in (1,5,3)
+
+gt greater thn
+filter(montant__gt=1000)
+filter(montant__gte=1000) /&& equal
+/u know
+lt less thn, lte equal
+
+startwite , istartwith
+filter(name__starwith='lee')
+==> select ... where name like 'lee%'
+
+endswith, iendswith
+
+range
+==>select ... where ... between '2121' and '1222'
+
+year
+filter(pub_date__year=2005)
+filter(pub_date__year__gte=2005)/greater thn or eq

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+
+{% block 'page_title' %}
+<div class="container">
+  <div class="container">
+    <h1 class="title">here you are </h1>
+    <p class="subtitle">maybe you get lost</p>
+  </div>
+</div>
+{% endblock %}
+
+
+{% block 'content' %}
+<div class="container p-6">
+  <div class="column is-4 is-offset-3">
+    <div class="container">
+      <h1 class="title">Ouupss..... <br>
+        you are not allowed to be here .</h1>
+      <p class="subtitle">it seems that you are not a doctor,
+        plz study for 7 years or more, and come back.
+      </p>
+    </div>
+  </div>
+  <p class="control">
+    <a class="button is-black" href="{% url 'view' %}">
+      <span>go back to home</span>
+    </a>
+  </p>
+</div>
+{% endblock %}

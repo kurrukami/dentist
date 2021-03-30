@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block 'page_title' %}
+
+{% endblock %}
+
+
+{% block 'content' %}
+
+
+<section id="" class="sec1 sec">
+
+  <div class="sub1_sec1 ">
+    <img src="{% static 'images/s5.svg' %}" alt="">
+  </div>
+
+  <div class="sub2_sec1 box">
+    <div class="content-wrapper box">
+      <form class="" action="" method="POST">
+        {% csrf_token %}
+
+        <div class="">
+          {{form.doctor}}
+        </div>
+        {{form.name}}
+        {{form.phone_num}}
+        {{form.cmnt}}
+
+        {% if key == 'date_ap' %}
+
+        <div class="align">
+          {{form.year}}
+          {{form.month}}
+          {{form.day}}
+          {{form.hour}}
+        </div>
+
+
+
+        {% endif %}
+
+
+
+        <div class="content-wrapper ">
+          <button class="btn color1" type="sibmit">confirme appointment</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>    
+  </section>
+
+<!-- WARNING:  -->
+
+
+
+
+
+
+
+<!-- XXX:
+
+<div class="columns">
+  <div class="column is-5">
+    <div class=" has-text-centred">
+      <h1 class="title">Make your appointment</h1>
+      <br>
+      <!-- WARNING:
+      <p class="subtitle">
+      enter the name of your doctor and your correcrt informations
+      </p>
+
+      <p class="subtitle">
+        -if you can't be present the day of your
+        appointment, plz warned <br> us at least befor 2 days
+        <br>
+        -our team will cantact you the day of your appointment
+
+      </p>
+    </div>
+    <br>
+    <div class="control ">
+      <a class="button is-white" href="{% url 'rv_view' 'key' %}" type="" name="">go back</a>
+    </div>
+
+  </div>
+
+  <div class="column ">
+    <form class="" action="" method="post">
+      {% csrf_token %}
+
+      <div class="field">
+        <label class="label has-text-white">doctor name</label>
+        <div class="control">
+          {{form.doctor}}
+        </div>
+      </div>
+      <div class="field is-grouped is-fullwidth">
+        <div class="field">
+          <label class="label has-text-white">your name</label>
+          <div class="control">
+            {{form.name}}
+          </div>
+        </div>
+        <div class="field">
+          <label class="label has-text-white">phone</label>
+          <div class="control">
+            {{form.phone_num}}
+          </div>
+        </div>
+
+      </div>
+      <div class="field">
+        <label class="label has-text-white">your comment</label>
+        <div class="control">
+          {{form.cmnt}}
+        </div>
+      </div>
+      {% if key == 'date_ap' %}
+      <div class="field is-grouped is-fullwidth">
+        <div class="field">
+          <label class="label has-text-white">year</label>
+          <div class="control">
+            {{form.year}}
+
+          </div>
+        </div>
+        <div class="field">
+          <label class="label has-text-white">month</label>
+          <div class="control">
+            {{form.month}}
+          </div>
+        </div>
+        <div class="field">
+          <label class="label has-text-white">day</label>
+          <div class="control">
+            {{form.day}}
+          </div>
+        </div>
+        <div class="field">
+          <label class="label has-text-white">hour</label>
+          <div class="control">
+            {{form.hour}}
+          </div>
+        </div>
+
+      </div>
+      {% endif %}
+
+      <div class="field is-fullwidth">
+        <div class="control column is-offset-9 ">
+          <button class="button is-black" type="sibmit">confirme appointment</button>
+        </div>
+
+
+      </div>
+
+    </form>
+  </div>
+
+</div>
+
+
+ -->
+
+
+
+{% endblock %}

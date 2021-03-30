@@ -1,0 +1,55 @@
+{% extends  'base.html' %}
+
+
+{% block 'page_title' %}
+<div class="content-wrapper">
+  <h1 class=""><strong>admin</strong> page</h1>
+  <p class="">welcome to admin page </p>
+</div>
+{% endblock %}
+
+
+
+{% block 'content' %}
+<section class="add_patient">
+  <div class="patient">
+    <div class="center">
+
+      <h1>all requests</h1>
+    </div>
+    <div class="align push">
+      <a href="{% url 'admin_view' 'doctors'  %}" class="cellule cellule-btn"> all doctors</a>
+
+    </div>
+  </div>
+</section>
+
+<section id="grid2" class="sec2 sec">
+  <div class="sub1_sec2">
+    {% for x in smtg %}
+    <div class="patient">
+      <div class="nav">
+        <div class="cellule ">
+          {{x.username}}
+        </div>
+        <div class="cellule ">
+          {{x.phone_num}}
+        </div>
+        <div class="cellule ">
+          {{x.email}}
+        </div>
+      </div>
+      <div class="nav push">
+        <a href="{% url 'get_adminn_pk' x.pk %}" class="cellule cellule-btn">send him email</a>
+      </div>
+    </div>
+    {% endfor%}
+
+  </div>
+  <div class="sub2_sec2">
+
+  </div>
+
+</section>
+
+{% endblock %}

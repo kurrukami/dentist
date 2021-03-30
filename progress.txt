@@ -1,0 +1,12 @@
+project name : zdentaire
+description : gestionnaire des patients
+start date : 15/10/2020
+
+
+*acheve
+ideas : -envoyer les mdp des client via gmail *
+        -gestionnare des rendez vous *
+        -limiter usage par ecran (je sais pas comment faire ca exp/netflex screens)
+        -gestionnare de patients *
+        -template des blog lieer au domain dentaire
+        -ajouter des ads au bord de site

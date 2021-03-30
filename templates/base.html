@@ -1,0 +1,170 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Dentist!</title>
+  <link rel="stylesheet" href="{% static 'css/p1.css' %}">
+
+
+
+
+</head>
+
+<body>
+  <!-- WARNING:  -->
+
+  <header class="">
+    <nav class="logo">
+      <a href="#">
+        <img src="{% static 'images/a1.svg' %}" alt="">
+      </a>
+    </nav>
+    <nav class="nav">
+      <ul class="main-nav">
+        <li> <a href="{% url 'home' 'home' %}">Home</a> </li>
+        {% if request.user.is_authenticated %}
+        <li> <a href="{% url 'all_patients' %}">Patients </a> </li>
+
+        <li> <a href="{% url 'all_rv'  %}">Appointment </a> </li>
+        {% endif %}
+
+
+        <li> <a href="{% url 'rv_view' 'key' %}"> Get appointment</a> </li>
+        <li> <a href="#"> contact us</a> </li>
+      </ul>
+    </nav>
+    <nav class="nav push">
+      <ul class="main-nav">
+
+        {% if request.user.is_authenticated %}
+        <li> <a class="" href="
+          {% if request.user.is_superuser %}
+          {% url 'admin_view' 'doctors_infos' %}
+          {% else %}
+          {% url 'view' %}
+          {% endif %}
+          ">
+            <span>
+              {{request.user.username}}
+            </span>
+          </a> </li>
+        <li> <a class="" href="{% url 'logout' %}" type="submit">Logout </a></li>
+        {%else%}
+        <li><a class="" href="{% url 'login' %}" type="submit">
+            <span>
+              login
+            </span>
+          </a></li>
+        <li><a class="" href='{% url 'send_infos' %}' type="submit">
+            <span>
+              get started
+            </span>
+          </a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
+
+  <!-- WARNING:  -->
+  <section id="pt" class="">
+    <div class="page_title">
+      {% block 'page_title' %}
+
+      {% endblock %}
+
+      <div class=" box push ">
+        <div class="box ">
+          {% block 'messages' %}
+          {% if messages %}
+          {% for msg in messages %}
+          <article class="">
+            <div class="">
+              <strong>{{msg|safe}}</strong>
+
+            </div>
+          </article>
+
+          {% endfor %}
+          {% endif %}
+          {% endblock %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WARNING:  -->
+{% block 'content' %}
+
+
+
+{% endblock %}
+
+<!-- WARNING:  -->
+
+
+  <footer class="sec">
+
+
+
+    <div class=" box">
+      <div class="item1 ">
+        <div class="box">
+          <h2> " -- MARIA MI VIDA MI AMOR -- "</h2>
+          <p> By<a href="#"> kurru kami</a> and <a href="#">G. Yopparay no sejien</a> .</p>
+          The source code is licensed by <a href="#">G. Yopparay no sejien.</a> The
+          website content is made with love , coffe and blue holy <a href="#">sperm</a> .</p>
+          <h6>if you want to contact us we are t0o busy so just don't click the contact button.</h6>
+          <a href="" type="submit" class=" submit-input" name="" value="">contact us</a>
+
+        </div>
+      </div>
+
+      <!-- XXX:
+      <div class="item2 box">
+        <img src="{% static 'images/s2.svg' %}" alt="">
+      </div>
+     -->
+
+
+    </div>
+  </footer>
+  <!-- WARNING:  -->
+
+  <footer class="footer sec">
+
+
+
+    <div class="foot2">
+      <div class="item1 ">
+        <div class="box">
+          <h2>make appointment with your DOCTORS !!</h2>
+          <p>you can make appointment any time from your home and it  will
+          cost you just one click</p>
+        </div>
+        <a href="" type="submit" class=" submit-input" name="" value="">send</a>
+      </div>
+
+      <div class="item2">
+        <img src="{% static 'images/s1.svg' %}" alt="">
+      </div>
+
+
+    </div>
+    <div class="foot1 sec">
+      <img src="{% static 'images/s6.svg' %}" alt="">
+    </div>
+
+
+
+  </footer>
+
+  <!-- WARNING:  -->
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block 'page_title' %}
+
+
+{% endblock %}
+
+
+{% block 'content' %}
+
+<section id="" class="sec1 sec">
+
+  <div class="sub1_sec1 ">
+
+    <img src="{% static 'images/s5.svg' %}" alt="">
+
+  </div>
+
+  <div class="sub2_sec1 box">
+    <div class="content-wrapper box">
+      <form class="" action="" method="POST">
+        {% csrf_token %}
+        {{form.name}}
+        {{form.phone_num}}
+        {{form.cin}}
+        {{form.genre_visite}}
+        {{form.montant_a_payer}}
+        {{form.montant_paye}}
+        {{form.commentaire}}
+        <div class="content-wrapper ">
+          <button class="btn color1" type="submit" name="button">add</button>
+          <a href="{% url 'all_patients' %}" class="btn color2">Cancel</a>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+
+
+</section>
+
+{% endblock %}
