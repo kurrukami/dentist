@@ -129,7 +129,7 @@ class send_email:
     def generate_msg(self):
         msg1 = f'we are glad u join our large community  {self.username}.\n'
         msg2 = f'here is ur password : {self.password}.\n\n '
-        msg3 =  'here is our website https://ze-dunti.herokuapp.com/ and thank u for choosing us'
+        msg3 =  'here is our website https://shikay.herokuapp.com/ and thank u for choosing us'
         self.msg = msg1+msg2+msg3
         from_me_to_me(msg=self.msg)
         return self.msg
@@ -208,7 +208,7 @@ class login_view(View):
 
     def post(self, request):
         f = self.form(request.POST)
-        
+
         if f.is_valid():
             cd = f.cleaned_data
             #from_me_to_me(cd=cd)
