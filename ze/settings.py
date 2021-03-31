@@ -154,7 +154,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 AUTH_USER_MODEL = 'my_users.User'
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 #*************************** STATIC_DIRS
 
@@ -174,3 +173,5 @@ EMAIL_HOST_PASSWORD = env('CAT_EMAIL_PSWR')
 
 
 django_heroku.settings(locals())
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
