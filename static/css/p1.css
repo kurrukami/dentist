@@ -20,7 +20,14 @@ img {
   height: 100%;
 }
 
+.msg{
+  background-color: #bdbdbe;
+  border-left: 4px solid #6e6afc;
+  color: black;
 
+  padding: 10px;
+
+}
 
 
 .btn {
@@ -132,9 +139,7 @@ header {
 .center {
   display: flex;
   flex-direction: column;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
+  
 }
 
 .box{
@@ -225,10 +230,9 @@ form {
   color: white;
   height: 30px;
   margin: 10px;
-  padding: 0.5em 2em;
+  padding: 1em 2em;
   background-color: #242424;
   border-bottom: 1px solid #464646;
-  color:
 }
 
 

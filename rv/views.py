@@ -74,16 +74,29 @@ class rv_view(View):
                     cd = f1.cleaned_data
                     from_me_to_me(cd=cd)
                     date = rv_form.tomorow_date()
-                    ap = rv.objects.create(
-                    doc_name = cd["doctor"],
-                    name = cd["name"],
-                    phone_num = cd["phone_num"],
-                    cmnt = cd["cmnt"],
-                    rd_time = date
-                    )
-                    msg = 'your appointment for tommorw was created'
-                    from_me_to_me(msg=msg)
-                    messages.success(request,msg)
+                    from_me_to_me(date=date)
+                    date = date.replace(hour = int(cd["hour"]))
+                    check_rv = rv_form.check_rv(date)
+                    from_me_to_me(check_rv=check_rv)
+                    hour = int(cd["hour"])
+                    if check_rv and (rv_form.check_hour(hour)):
+                        ap = rv.objects.create(
+                        doc_name = cd["doctor"],
+                        name = cd["name"],
+                        phone_num = cd["phone_num"],
+                        cmnt = cd["cmnt"],
+                        rd_time = date
+                        )
+
+                        msg = f' your appointment for tommorw was created {date}'
+                        from_me_to_me(msg=msg)
+                        messages.success(request,msg)
+                    else:
+                        msg = f' {date} , this date alrady taken, plz try another day or ur hour is broken'
+                        from_me_to_me(msg=msg)
+                        messages.error(request, msg)
+                        return self.get(request, key)
+
                 else:
                     msg = 'smtg is not valid, plz try again'
                     messages.error(request, f1.errors)
@@ -100,24 +113,35 @@ class rv_view(View):
                     day = cd["day"],
                     hour = cd["hour"]
                     )
+
+                    hour = int(cd["hour"])
                     check_rv = rv_form.check_rv(date)
                     from_me_to_me(msg=check_rv)
-                    if not check_rv:
-                        msg = f' {date} , this date alrady taken, plz try another day'
-                        from_me_to_me(msg=msg)
-                        messages.error(request, msg)
-                        return self.get(request, key)
+                    if rv_form.check_valid_date(date=date) and rv_form.check_hour(hour):
+                        if not check_rv:
+                            msg = f' {date} , this date alrady taken, plz try another day'
+                            from_me_to_me(msg=msg)
+                            messages.error(request, msg)
+                            return self.get(request, key)
 
-                    ap = rv.objects.create(
-                    doc_name = cd["doctor"],
-                    name = cd["name"],
-                    phone_num = cd["phone_num"],
-                    cmnt = cd["cmnt"],
-                    rd_time = date
-                    )
-                    msg = f'your appointment was created in {date}'
-                    messages.success(request, msg)
-                    from_me_to_me(msg=msg)
+                        ap = rv.objects.create(
+                        doc_name = cd["doctor"],
+                        name = cd["name"],
+                        phone_num = cd["phone_num"],
+                        cmnt = cd["cmnt"],
+                        rd_time = date
+                        )
+                        msg = f'your appointment was created in {date}'
+                        messages.success(request, msg)
+                        from_me_to_me(msg=msg)
+                    else:
+                        msg = f'{date}  choosen was not valid u son of bitch,its the past'
+                        messages.success(request, msg)
+                        from_me_to_me(msg=msg)
+
+
+
+
                 else:
                     msg = 'smtg is not valid, plz try again'
                     from_me_to_me(msg=msg)
@@ -136,9 +160,6 @@ class rv_form_view(View):
 
     def get_rv_form(self, key):
         if key == 'tommorw_ap':
-            from_me_to_me(form2=self.form2.doctors)
-            self.form2.doctors = [(x.username,x.username) for x in doctor.objects.all() if not x.is_superuser]
-            from_me_to_me(form2=self.form2.doctors)
             return self.form2
         if key == 'date_ap':
             return self.form1
@@ -160,7 +181,6 @@ class rv_form_view(View):
             'day' : self.date_now().day
             })
 
-
         context.setdefault('form', form)
         from_me_to_me(cnt=context)
         return render(request, self.template_name, context)
@@ -181,13 +201,9 @@ class rv_form_view(View):
 
     def tomorow_date(self):
         today = self.date_now()
-        date = datetime.datetime(
-        year=today.year,
-        month = today.month,
-        day = today.day +1,
-        hour = today.hour,
-        minute = today.minute
-        )
+        date_diff = datetime.timedelta(days=1)
+        date = today + date_diff
+        print(date)
         return date
 
     def wtvr_date(self, **args):
@@ -199,3 +215,13 @@ class rv_form_view(View):
         hour = int(args["hour"])
         )
         return date
+
+    def check_valid_date(self, **args):
+        now = self.date_now()
+        client_date = args["date"]
+        date_diff = client_date - now
+        return (date_diff.days < 0)
+
+
+    def check_hour(self, hour):
+            return (hour > 8 and hour <= 12) or (hour > 14 and hour <= 19)

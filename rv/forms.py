@@ -9,7 +9,7 @@ from ze.shit import *
 from django.contrib import messages
 from my_users.models import *
 
-from django.utils.translation import gettext_lazy as _
+#from django.utils.translation import gettext_lazy as _
 
 
 class form_validationn(forms.Form):
@@ -32,7 +32,7 @@ class form_validationn(forms.Form):
 
 from my_users.models import doctor
 
-class rv_form_dt(forms.ModelForm, form_validationn):
+class rv_form_dt(forms.ModelForm):
     doctors = [(x.username, x.username) for x in doctor.objects.all() if not x.is_superuser]
 
     doctor = forms.ChoiceField(
@@ -71,6 +71,8 @@ class rv_form_tmrw(forms.ModelForm, form_validationn):
         widget=forms.Select(attrs={'class':'select'}),
         choices=doctors
     )
+
+    hour = forms.CharField(label='hour', widget=forms.TextInput(attrs={'class':'form_input', 'placeholder':'hour'}))
 
 
     class Meta:

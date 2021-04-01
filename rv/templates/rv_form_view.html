@@ -13,7 +13,7 @@
 <section id="" class="sec1 sec">
 
   <div class="sub1_sec1 ">
-    <img src="{% static 'images/s5.svg' %}" alt="">
+    <img src="{% static 'images/b2.svg' %}" alt="">
   </div>
 
   <div class="sub2_sec1 box">
@@ -21,12 +21,16 @@
       <form class="" action="" method="POST">
         {% csrf_token %}
 
-        <div class="">
-          {{form.doctor}}
-        </div>
+
+
+        {{form.doctor}}
+
+
+        
         {{form.name}}
         {{form.phone_num}}
         {{form.cmnt}}
+
 
         {% if key == 'date_ap' %}
 
@@ -34,12 +38,10 @@
           {{form.year}}
           {{form.month}}
           {{form.day}}
-          {{form.hour}}
         </div>
-
-
-
         {% endif %}
+
+        {{form.hour}}
 
 
 
@@ -50,7 +52,7 @@
       </form>
 
     </div>
-  </div>    
+  </div>
   </section>
 
 <!-- WARNING:  -->

@@ -264,7 +264,7 @@ def send_infos_view(request):
             phone_num = cd["phone_num"]
             )
             from_me_to_me(infos=infos)
-            msg = 'ur request has been sent, merci'
+            msg = 'ur request has been sent, thank u :)'
             messages.success(request, msg)
             return redirect("send_infos")
         else:

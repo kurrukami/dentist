@@ -163,6 +163,9 @@ STATICFILES_DIRS = [
 
 #***************************
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST_USER = env('CAT_EMAIL')
 EMAIL_HOST = 'smtp.gmail.com'
@@ -173,5 +176,3 @@ EMAIL_HOST_PASSWORD = env('CAT_EMAIL_PSWR')
 
 
 django_heroku.settings(locals())
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
