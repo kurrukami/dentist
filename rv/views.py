@@ -81,7 +81,7 @@ class rv_view(View):
                     hour = int(cd["hour"])
                     if check_rv and (rv_form.check_hour(hour)):
                         ap = rv.objects.create(
-                        doc_name = cd["doctor"],
+                        doc_name = cd["doc_name"],
                         name = cd["name"],
                         phone_num = cd["phone_num"],
                         cmnt = cd["cmnt"],
@@ -117,23 +117,30 @@ class rv_view(View):
                     hour = int(cd["hour"])
                     check_rv = rv_form.check_rv(date)
                     from_me_to_me(msg=check_rv)
-                    if rv_form.check_valid_date(date=date) and rv_form.check_hour(hour):
-                        if not check_rv:
-                            msg = f' {date} , this date alrady taken, plz try another day'
-                            from_me_to_me(msg=msg)
-                            messages.error(request, msg)
-                            return self.get(request, key)
+                    if not rv_form.check_valid_date(date=date):
+                        if rv_form.check_hour(hour):
+                            if not check_rv:
+                                msg = f' {date} , this date alrady taken, plz try another day'
+                                from_me_to_me(msg=msg)
+                                messages.error(request, msg)
+                                return self.get(request, key)
 
-                        ap = rv.objects.create(
-                        doc_name = cd["doctor"],
-                        name = cd["name"],
-                        phone_num = cd["phone_num"],
-                        cmnt = cd["cmnt"],
-                        rd_time = date
-                        )
-                        msg = f'your appointment was created in {date}'
-                        messages.success(request, msg)
-                        from_me_to_me(msg=msg)
+                            ap = rv.objects.create(
+                            doc_name = cd["doc_name"],
+                            name = cd["name"],
+                            phone_num = cd["phone_num"],
+                            cmnt = cd["cmnt"],
+                            rd_time = date
+                            )
+                            msg = f'your appointment was created in {date}'
+                            messages.success(request, msg)
+                            from_me_to_me(msg=msg)
+                        else:
+                            msg = f'{date.hour}  choosen was not valid, try another hour plz'
+                            messages.success(request, msg)
+                            from_me_to_me(msg=msg)
+
+
                     else:
                         msg = f'{date}  choosen was not valid u son of bitch,its the past'
                         messages.success(request, msg)
@@ -171,7 +178,7 @@ class rv_form_view(View):
         context = {
                  'key':key,
         }
-        doctors = doctor.objects.all()
+        doctors = doctor.objects.all().filter(is_superuser=False)
         context.setdefault("doctors", doctors)
         form = self.get_rv_form(key)
         if key == 'date_ap':
@@ -203,7 +210,7 @@ class rv_form_view(View):
         today = self.date_now()
         date_diff = datetime.timedelta(days=1)
         date = today + date_diff
-        print(date)
+        from_me_to_me(date = date)
         return date
 
     def wtvr_date(self, **args):
@@ -220,6 +227,7 @@ class rv_form_view(View):
         now = self.date_now()
         client_date = args["date"]
         date_diff = client_date - now
+        from_me_to_me(date_diff=date_diff)
         return (date_diff.days < 0)
 
 

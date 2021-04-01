@@ -33,12 +33,16 @@ class form_validationn(forms.Form):
 from my_users.models import doctor
 
 class rv_form_dt(forms.ModelForm):
-    doctors = [(x.username, x.username) for x in doctor.objects.all() if not x.is_superuser]
 
-    doctor = forms.ChoiceField(
-        widget=forms.Select(attrs={'class':'select'}),
-        choices=doctors
-    )
+
+    #doctors_list = list(filter(lambda x : x.username != 'kurru', doctor.objects.all()))
+    #doctors = [(x.username.upper(), x.username) for x in doctors_list]
+
+    #doctor = forms.ChoiceField(
+    #    widget=forms.Select(attrs={'class':'select'}),
+    #    choices=doctors
+    #)
+
 
     year = forms.CharField(label='year', widget=forms.TextInput(attrs={'class':'form_input', 'placeholder':'year'}))
     month = forms.CharField(label='month', widget=forms.TextInput(attrs={'class':'form_input', 'placeholder':'month'}))
@@ -50,10 +54,12 @@ class rv_form_dt(forms.ModelForm):
 
     class Meta:
         model = rv
-        fields = ['name', 'phone_num', 'cmnt'
+        fields = ['doc_name', 'name', 'phone_num', 'cmnt'
                   #'year', 'mounth', 'day', 'hour',
                  ]
         widgets = {
+
+                   'doc_name': forms.TextInput(attrs={'class':'form_input', 'placeholder':'your doctor name'}),
                    'name': forms.TextInput(attrs={'class':'form_input', 'placeholder':'name'}),
                    'phone_num': forms.TextInput(attrs={'class':'form_input', 'placeholder':'phone'}),
                    'cmnt': forms.TextInput(attrs={'class':'form_input', 'placeholder':'comment', 'rows' :'1'}),
@@ -66,23 +72,26 @@ class rv_form_dt(forms.ModelForm):
 
 
 class rv_form_tmrw(forms.ModelForm, form_validationn):
-    doctors = [(x.username, x.username) for x in doctor.objects.all() if not x.is_superuser]
-    doctor = forms.ChoiceField(
-        widget=forms.Select(attrs={'class':'select'}),
-        choices=doctors
-    )
+
+    #doctors_list = list(filter(lambda x : x.username != 'kurru', doctor.objects.all()))
+    #doctors = [(x.username.upper(), x.username) for x in doctors_list]
+
+    #doctor = forms.ChoiceField(
+    #    widget=forms.Select(attrs={'class':'select'}),
+    #    choices=doctors
+    #)
 
     hour = forms.CharField(label='hour', widget=forms.TextInput(attrs={'class':'form_input', 'placeholder':'hour'}))
 
 
     class Meta:
         model = rv
-        fields = ['name', 'phone_num', 'cmnt'
+        fields = ['doc_name','name', 'phone_num', 'cmnt'
                   #'year', 'mounth', 'day', 'hour',
 
                 ]
         widgets = {
-
+                   'doc_name': forms.TextInput(attrs={'class':'form_input', 'placeholder':'name'}),
                    'name': forms.TextInput(attrs={'class':'form_input', 'placeholder':'name'}),
                    'phone_num': forms.TextInput(attrs={'class':'form_input', 'placeholder':'phone'}),
                    'cmnt': forms.TextInput(attrs={'class':'form_input', 'placeholder':'comment', 'rows' :'1'}),

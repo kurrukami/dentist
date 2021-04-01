@@ -50,7 +50,8 @@ class User(AbstractUser):
         ADMIN = "ADMIN", "admin"
         DOCTOR = "DOCTOR", "doctor"
 
-    type = models.CharField(choices=types.choices,
+    type = models.CharField(
+    choices=types.choices,
     default=types.DOCTOR,
     max_length=50)
 
