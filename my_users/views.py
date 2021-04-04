@@ -65,7 +65,7 @@ def get_adminn_pk(request, pk):
             from_me_to_me(pswd='password generated ...')
             msg = op.generate_msg()
             from_me_to_me(msg='msg generated ...')
-            if op.send_him_mail() is not None:
+            if op.send_him_mail():
                 msg = 'send_email_process complited'
                 doc = op.create_doctor()
                 from_me_to_me(doctor='doctor created ...')
@@ -128,7 +128,7 @@ class send_email:
 
     def generate_msg(self):
         msg1 = f'we are glad u join our large community  {self.username}.\n'
-        msg2 = f'here is ur password : {self.password}.\n\n '
+        msg2 = f'here is ur password : {self.password}.\n\n'
         msg3 =  'here is our website https://shikay.herokuapp.com/ and thank u for choosing us'
         self.msg = msg1+msg2+msg3
         from_me_to_me(msg=self.msg)
@@ -161,14 +161,15 @@ class send_email:
             self.from_email,
             [self.to_email],
             fail_silently=False)
-            msg = 'email has sent'
+
+            msg = 'email was sent'
             from_me_to_me(msg=msg)
-            from_me_to_me(msg=self.to_email)
-            return 11
+            from_me_to_me(to_email=self.to_email)
+            return True
         except:
             msg = 'email is None'
             from_me_to_me(msg=msg)
-            return None
+            return False
 
 @only_superusers
 def superuser_page(request):

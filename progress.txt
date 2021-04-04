@@ -1,4 +1,4 @@
-project name : zdentaire
+project name : shikay
 description : gestionnaire des patients
 start date : 15/10/2020
 

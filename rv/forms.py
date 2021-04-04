@@ -47,7 +47,7 @@ class rv_form_dt(forms.ModelForm):
     year = forms.CharField(label='year', widget=forms.TextInput(attrs={'class':'form_input', 'placeholder':'year'}))
     month = forms.CharField(label='month', widget=forms.TextInput(attrs={'class':'form_input', 'placeholder':'month'}))
     day = forms.CharField(label='day', widget=forms.TextInput(attrs={'class':'form_input', 'placeholder':'day'}))
-    hour = forms.CharField(label='hour', widget=forms.TextInput(attrs={'class':'form_input', 'placeholder':'hour'}))
+    hour = forms.CharField(label='hour', widget=forms.TextInput(attrs={'id = "year" class':'form_input', 'placeholder':'hour'}))
 
 
 

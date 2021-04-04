@@ -1,32 +1,37 @@
 {% extends 'base.html' %}
+{% load static %}
 
 
 
 {% block 'page_title' %}
-<div class="container">
-  <div class="container">
-    <h1 class="title">here you are </h1>
-    <p class="subtitle">maybe you get lost</p>
-  </div>
-</div>
+
 {% endblock %}
 
 
 {% block 'content' %}
-<div class="container p-6">
-  <div class="column is-4 is-offset-3">
-    <div class="container">
-      <h1 class="title">Ouupss..... <br>
-        you are not allowed to be here .</h1>
-      <p class="subtitle">it seems that you are not a doctor,
-        plz study for 7 years or more, and come back.
-      </p>
+<section id="" class="sec1 sec">
+
+  <div class="sub1_sec1 box">
+    <div class="content-wrapper box">
+      <h1>Ouupssiiiis..... you are not allowed to be here .</h1>
+      <p>it seems that you are not superuser,
+        and u probably have hacking intentions so stay where the fuck u r
+        cus we calling FBI right now, or u can go back home</p>
+
+      <div class="">
+        <a class="btn color1" href="{% url 'view' %}">
+          <span>go back to home</span>
+        </a>
+
+      </div>
     </div>
   </div>
-  <p class="control">
-    <a class="button is-black" href="{% url 'view' %}">
-      <span>go back to home</span>
-    </a>
-  </p>
-</div>
+
+  <div class="sub2_sec1">
+    <img src="{% static 'images/b1.svg' %}" alt="">
+
+  </div>
+</section>
+
+
 {% endblock %}

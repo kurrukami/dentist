@@ -2,18 +2,15 @@
 
 
 {% block 'page_title' %}
-<div class="content-wrapper">
-  <h1 class=""><strong>admin</strong> page</h1>
-  <p class="">welcome to admin page </p>
-</div>
+
 {% endblock %}
 
 
 
 {% block 'content' %}
 <section class="add_patient">
-  <div class="patient">
-    <div class="center">
+  <div class="str">
+    <div class="">
 
       <h1>all requests</h1>
     </div>
@@ -27,7 +24,7 @@
 <section id="grid2" class="sec2 sec">
   <div class="sub1_sec2">
     {% for x in smtg %}
-    <div class="patient">
+    <div class="str">
       <div class="nav">
         <div class="cellule ">
           {{x.username}}

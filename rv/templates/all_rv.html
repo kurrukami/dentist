@@ -9,7 +9,7 @@
 {% block 'content' %}
 
 <section class="add_patient sec">
-  <div class="patient">
+  <div class="str">
     <div class="center">
 
       <a href="{% url 'rv_view' 'key' %} " class="cellule cellule-btn"> make appointment</a>
@@ -23,26 +23,31 @@
   <div class="sub1_sec2">
     {% for rv in rvs %}
     <div class="patient">
-      <div class="nav">
-        <div class="cellule ">
-          {{rv.name}}
-        </div>
-        <div class="cellule ">
-          {{rv.phone_num}}
-        </div>
-        <div class="cellule ">
-          <td>{{rv.cmnt}}</td>
-        </div>
-        <div class="cellule ">
-          <td>{{rv.date_forma}}</td>
-        </div>
+      <div class="name patient_info box">
+        <div class="">
+          <span class="title">{{rv.name}}</span><br>
+          <div class="align">
+            <span class="tag">phone:</span><br>
+            <span class="sub_title">{{rv.phone_num}}</span>
+          </div>
 
+        </div>
+      </div>
+
+      <div class="start_day patient_info">
+        <span class="tag">appointment date</span><br>
+        <span class="sub_title">{{rv.date_forma}}</span>
 
       </div>
-      <div class="nav push">
-        <a href="" class="cellule cellule-btn">delete</a>
+      <div class="cmnt patient_info">
+        <span class="tag">comment</span><br>
+        <span class="sub_title">{{rv.cmnt}}</span>
       </div>
+
+
     </div>
+
+
 
     {% endfor%}
 

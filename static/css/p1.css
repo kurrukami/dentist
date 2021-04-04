@@ -4,7 +4,6 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   background: #333;
   color: #fff;
-  font-size: 20px;
   line-height: 1.5;
 
 }
@@ -12,6 +11,14 @@ body {
 a{
   color: #ef536b;
   text-decoration: none;
+
+}
+h1{
+  font-size: 20px;
+}
+h2{
+  font-size: 20px;
+
 }
 
 img {
@@ -30,7 +37,11 @@ img {
 }
 
 
+
+
 .btn {
+  font-size: 8px;
+
   display: inline-block;
   background-color: #333;
   color: #fff;
@@ -67,6 +78,7 @@ header {
 }
 
 .logo {
+  display: none;
   width: 50px;
   height: 30%;
 }
@@ -90,10 +102,11 @@ header {
 }
 
 .main-nav>li {
-  padding: 15px;
+  padding:5px;
 }
 
 .main-nav>li>a {
+
   text-decoration: none;
   color: #eaeaea;
 }
@@ -139,48 +152,143 @@ header {
 .center {
   display: flex;
   flex-direction: column;
-  
+  justify-content: center;
+  align-items: center;
 }
 
 .box{
-  padding: 5px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
+.patient_info{
+
+  padding:0;
+  border: 1px solid black;
+  border-radius: 4px;
+  color: black;
+  background-color: #6e6afc;
+  font-size: 10px;
+
+}
+.tag{
+  font-size: 1em ;
+  padding: 5px;
+  font-weight: bolder;
+}
+.title{
+  font-size: 20px;
+  font-family: monospace;
+  padding: 5px;
+  font-weight: bold;
+}
+.sub_title{
+  font-size: 10px;
+  padding: 5px;
+  font-weight: lighter;
+}
+
+.str{
+  padding: 0.5em;
+  margin: 0.5em 1em;
+  color: black;
+  background-color: #f5f5f7;
+
+  border: 1px solid black;
+  font-size: 0.5em;
+  font-style: italic;
+}
+
 .patient {
   font-size: 0.5em;
   font-style: italic;
-  display: flex;
-  flex-direction: row;
-  padding: 10px;
-  margin: 0.5em 2em;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(5,50px);
+  grid-gap: 5px 5px ;
+
+
+
+  padding: 0.5em;
+  margin: 0.5em 1em;
   color: black;
   background-color: #f5f5f7;
 
   border: 1px solid black;
 }
+/*************************/
+.name{
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
+
+
+}
+
+.cost_dh{
+  grid-column: 3 / span 1;
+  grid-row: 1 / span 1;
+
+}
+
+.rest_dh{
+  grid-column: 3 / span 1;
+  grid-row: 2 / span 1;
+
+}
+.start_day{
+  grid-column: 1 / span 3;
+  grid-row: 3 / span 1;
+
+}
+.cmnt{
+  grid-column: 1 / span 2;
+  grid-row: 4 / span 1;
+
+}
+.genre_visite{
+  grid-column: 3 / span 1;
+  grid-row: 4 / span 1;
+}
+.dl{
+  grid-column: 3 / span 1;
+  grid-row: 5 / span 1;
+}
+.upd{
+  grid-column: 1 / span 2;
+  grid-row: 5 / span 1;
+}
+/************************************/
 
 .cellule {
+  font-size: 8px;
+
   display: inline-block;
-  padding: 9px ;
-  margin-left: 1em;
+  padding: 9px 5px ;
+  margin-left: 0.5em;
   border: 1px solid black;
   background-color: #bdbdbe;
   color: black;
 }
 
 .cellule-btn {
+
   text-decoration: none;
   color: white;
   background-color: black;
 }
 
+.btn_input{
+  padding: 9px 5px ;
+  height: 15px;
+}
 input {
-  display: inline-block;
-  padding: 9px;
+
+  padding: 9px 5px ;
+  height: 15px;
   margin: 0px;
   background-color: #242424;
   color: #e5f5e5;
@@ -206,6 +314,8 @@ form {
 }
 
 .submit-input {
+  font-size: 15px;
+
   display: inline-block;
   background-color: black;
   color: white;
@@ -285,28 +395,46 @@ footer{
 
 }
 
-@media screen and (min-width :800px) {
+@media screen and (min-width: 600px) {
 
-  body {
+  body{
 
     font-size: 1em;
 
   }
 
-  header {
-    font-size: 1em;
-
+  .btn, .cellule, .cellule-btn {
+    font-size: 14px;
   }
+
+
+
+
+  .main-nav {
+    display: flex;
+    flex-direction: row;
+    font-family: monospace;
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+  }
+
+  .main-nav>li {
+    font-size: 10px;
+    padding: 15px;
+  }
+
+
   .logo {
+    display: block;
     width: 150px;
-    color: white;
+    height: 100%;
   }
 
   .patient {
     font-size: 1em;
   }
 
-/*********************************************************/
 
 
   .footer, .sec1{
@@ -317,7 +445,7 @@ footer{
 
 
 
-  .foot2 ,.sub1_sec1{
+  .foot2 , .sub1_sec1{
     grid-column: 2 / span 1;
     grid-row:  1 / span 1
 

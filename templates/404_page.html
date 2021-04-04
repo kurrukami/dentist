@@ -11,21 +11,28 @@
 {% endblock %}
 
 {% block 'content' %}
-  <div class="container p-6">
-    <div class="column is-4 is-offset-3">
-      <div class="container">
-        <h1 class="title">Ouupss..... 404</h1>
-        <h1 class="title">you get lost agian</h1>
-        <p class="subtitle">this page not found i think,
-          plz go back or try later
-        </p>
-      </div>
+<section id="" class="sec1 sec">
 
+  <div class="sub1_sec1 box">
+    <div class="content-wrapper box">
+      <h1>Ouupssiiiis.....  404.</h1>
+      <p>this page not found i think,
+        plz go back or try later</p>
+
+      <div class="">
+        <a class="btn color1" href="{% url 'view' %}">
+          <span>go back to home</span>
+        </a>
+
+      </div>
     </div>
-    <p class="control">
-      <a class="button is-black" href="{% url 'view' %}">
-        <span>go back to home</span>
-      </a>
-    </p>
   </div>
+
+  <div class="sub2_sec1">
+    <img src="{% static 'images/b1.svg' %}" alt="">
+
+  </div>
+</section>
+
+
 {% endblock %}
