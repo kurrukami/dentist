@@ -18,6 +18,20 @@ class adminn_infos_form(forms.ModelForm):
         }
 
 
+class doctor_register_form(forms.ModelForm):
+
+    password = forms.CharField(label='password', widget=forms.PasswordInput(attrs={'class':'form_input', 'placeholder':'password'}))
+    
+    class Meta:
+        model = doctor
+        fields = ('username', 'email', 'phone_num')
+        widgets = {
+                   'username': forms.TextInput(attrs={'class':'form_input', 'placeholder':'username'}),
+                   'email': forms.TextInput(attrs={'class':'form_input', 'placeholder':'email'}),
+                   'phone_num': forms.TextInput(attrs={'class':'form_input', 'placeholder':'phone'}),
+        }
+
+
 class login_form(forms.Form):
 
     username = forms.CharField(label='username', widget=forms.TextInput(attrs={'class':'form_input', 'placeholder':'username'}))

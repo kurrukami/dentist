@@ -60,6 +60,8 @@ class User(AbstractUser):
     email = models.EmailField(unique=True)
     phone_num =  models.CharField(max_length=11)
 
+    autorized = models.BooleanField(default=False)
+
     description = models.TextField(blank=True)
 
 

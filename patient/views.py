@@ -6,7 +6,7 @@ from ze.shit import *
 from ze.decorators import *
 
 from my_users.models import *
-decorators =[only_doctors]
+decorators =[only_doctors, have_permission]
 
 
 
@@ -18,7 +18,7 @@ class patients_gestion_page(View):
     qs = []
     patients = patient.objects.all()
 
-    @method_decorator(only_doctors)
+    @method_decorator(decorators)
     def get(self, request):
 
 
@@ -59,6 +59,7 @@ class patients_gestion_page(View):
         return self.qs
 
     @method_decorator(only_doctors)
+    @method_decorator(have_permission)
     def delete_patient_fake(request, pk):
         try:
             p = patient.objects.get(pk=pk)
@@ -79,6 +80,7 @@ class patients_gestion_page(View):
 
 
 @only_doctors
+@have_permission
 def update_patient2(request, pk):
     form = patient_form
     try:
@@ -102,6 +104,7 @@ def update_patient2(request, pk):
     return render(request, 'patient_form_view.html', context)
 
 @only_doctors
+@have_permission
 def delete_patient_real(request, pk):
     try:
         p = patient.objects.get(pk=pk)

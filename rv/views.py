@@ -4,6 +4,8 @@ from .forms import *
 
 from ze.shit import *
 from ze.decorators import *
+decorators =[only_doctors, have_permission]
+
 
 from .models import *
 from django import forms
@@ -17,7 +19,7 @@ class all_rv(View):
     context = {}
 
 
-    @method_decorator(only_doctors)
+    @method_decorator(decorators)
     def get(self, request):
         today = datetime.datetime.now()
         #rvs = rv.objects.get_queryset({"doc_name": request.user})
@@ -80,17 +82,25 @@ class rv_view(View):
                     from_me_to_me(check_rv=check_rv)
                     hour = int(cd["hour"])
                     if check_rv and (rv_form.check_hour(hour)):
-                        ap = rv.objects.create(
-                        doc_name = cd["doc_name"],
-                        name = cd["name"],
-                        phone_num = cd["phone_num"],
-                        cmnt = cd["cmnt"],
-                        rd_time = date
-                        )
+                        if not rv_form.check_doctor(cd["doc_name"]):
+                            ap = rv.objects.create(
+                            doc_name = cd["doc_name"],
+                            name = cd["name"],
+                            phone_num = cd["phone_num"],
+                            cmnt = cd["cmnt"],
+                            rd_time = date
+                            )
 
-                        msg = f' your appointment for tommorw was created {date}'
-                        from_me_to_me(msg=msg)
-                        messages.success(request,msg)
+                            msg = f' your appointment for tommorw was created {date}'
+                            from_me_to_me(msg=msg)
+                            messages.success(request,msg)
+                        else:
+                            msg = f'{cd["doc_name"]} is not one of our doctors'
+                            messages.success(request, msg)
+                            from_me_to_me(msg=msg)
+
+
+
                     else:
                         msg = f' {date} , this date alrady taken, plz try another day or ur hour is broken'
                         from_me_to_me(msg=msg)
@@ -125,16 +135,24 @@ class rv_view(View):
                                 messages.error(request, msg)
                                 return self.get(request, key)
 
-                            ap = rv.objects.create(
-                            doc_name = cd["doc_name"],
-                            name = cd["name"],
-                            phone_num = cd["phone_num"],
-                            cmnt = cd["cmnt"],
-                            rd_time = date
-                            )
-                            msg = f'your appointment was created in {date}'
-                            messages.success(request, msg)
-                            from_me_to_me(msg=msg)
+                            if not rv_form.check_doctor(cd["doc_name"]):
+                                ap = rv.objects.create(
+                                doc_name = cd["doc_name"],
+                                name = cd["name"],
+                                phone_num = cd["phone_num"],
+                                cmnt = cd["cmnt"],
+                                rd_time = date
+                                )
+                                msg = f'your appointment was created in {date}'
+                                messages.success(request, msg)
+                                from_me_to_me(msg=msg)
+                            else:
+                                msg = f'{cd["doc_name"]} is not one of our doctors'
+                                messages.success(request, msg)
+                                from_me_to_me(msg=msg)
+
+
+
                         else:
                             msg = f'{date.hour}  choosen was not valid, try another hour plz'
                             messages.success(request, msg)
@@ -200,6 +218,12 @@ class rv_form_view(View):
         except rv.DoesNotExist:
             return True
 
+    def check_doctor(self, doc_name):
+        try:
+            doc = doctor.objects.get(username=doc_name)
+            return False
+        except doctor.DoesNotExist:
+            return True
 
     def date_now(self):
         date = datetime.datetime.now()

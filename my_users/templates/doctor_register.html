@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block 'page_title' %}
+
+{% endblock %}
+
+
+{% block 'content' %}
+
+<section id="" class="sec1 sec">
+  <div class="sub1_sec1 ">
+    <img src="{% static 'images/s5.svg' %}" alt="">
+
+  </div>
+
+  <div class="sub2_sec1 box">
+    <div class="content-wrapper ">
+      <form class="" action="" method="POST">
+        {% csrf_token %}
+
+        {{form.username}}
+        {{form.email}}
+        {{form.phone_num}}
+        {{form.password}}
+
+        <button class="btn color1" type="submit" name="button">send</button>
+
+      </form>
+
+    </div>
+  </div>
+
+
+
+</section>
+
+
+
+
+
+{% endblock %}

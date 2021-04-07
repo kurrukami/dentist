@@ -46,3 +46,21 @@ def only_superusers(view_func):
             return redirect("login")
 
     return wrapper_func
+
+
+def have_permission(view_func):
+    def wrapper_func(request, *args, **kwargs):
+        if request.user.autorized == False:
+            from_me_to_me(msg='you dont have permissions yet :))')
+            from_me_to_me(msg="decorator works")
+            template_name = 'dont_have_permissions.html'
+            msg='you dont have permissions yet :))'
+            context.setdefault('user', request.user)
+            context.setdefault('msg', msg)
+            return  render(request, template_name, context)
+        else:
+            msg='seems tht u have payed urs taxes:))'
+            from_me_to_me(msg='msg')
+            return  view_func(request, *args,**kwargs)
+
+    return wrapper_func
