@@ -54,7 +54,7 @@ def have_permission(view_func):
             from_me_to_me(msg='you dont have permissions yet :))')
             from_me_to_me(msg="decorator works")
             template_name = 'dont_have_permissions.html'
-            msg='you dont have permissions yet :))'
+            msg='this page requires some permissions that you dont have yet :))'
             context.setdefault('user', request.user)
             context.setdefault('msg', msg)
             return  render(request, template_name, context)

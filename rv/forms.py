@@ -59,7 +59,7 @@ class rv_form_dt(forms.ModelForm):
                  ]
         widgets = {
 
-                   'doc_name': forms.TextInput(attrs={'class':'form_input', 'placeholder':'your doctor name'}),
+                   'doc_name': forms.TextInput(attrs={'class':'form_input', 'placeholder':'doctor s name'}),
                    'name': forms.TextInput(attrs={'class':'form_input', 'placeholder':'name'}),
                    'phone_num': forms.TextInput(attrs={'class':'form_input', 'placeholder':'phone'}),
                    'cmnt': forms.TextInput(attrs={'class':'form_input', 'placeholder':'comment', 'rows' :'1'}),
@@ -91,7 +91,7 @@ class rv_form_tmrw(forms.ModelForm, form_validationn):
 
                 ]
         widgets = {
-                   'doc_name': forms.TextInput(attrs={'class':'form_input', 'placeholder':'name'}),
+                   'doc_name': forms.TextInput(attrs={'class':'form_input', 'placeholder':'doctor s name'}),
                    'name': forms.TextInput(attrs={'class':'form_input', 'placeholder':'name'}),
                    'phone_num': forms.TextInput(attrs={'class':'form_input', 'placeholder':'phone'}),
                    'cmnt': forms.TextInput(attrs={'class':'form_input', 'placeholder':'comment', 'rows' :'1'}),

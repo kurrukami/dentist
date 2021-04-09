@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+import ze
+
 #import my_users, patient
+
+
+
+
+
 
 
 urlpatterns = [
@@ -26,3 +33,9 @@ urlpatterns = [
     path('rv/', include('rv.urls')),
     path('', include('home.urls')),
 ]
+
+handler404 = 'ze.views.error_404'
+"""handler500 = 'ze.views.error_500'
+handler403 = 'ze.views.error_403'
+handler400 = 'ze.views.error_400'
+"""
