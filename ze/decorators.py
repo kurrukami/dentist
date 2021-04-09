@@ -50,7 +50,7 @@ def only_superusers(view_func):
 
 def have_permission(view_func):
     def wrapper_func(request, *args, **kwargs):
-        if request.user.autorized == False:
+        if request.user.autorized == False and request.user.is_superuser == False:
             from_me_to_me(msg='you dont have permissions yet :))')
             from_me_to_me(msg="decorator works")
             template_name = 'dont_have_permissions.html'

@@ -35,7 +35,6 @@ urlpatterns = [
 ]
 
 handler404 = 'ze.views.error_404'
-"""handler500 = 'ze.views.error_500'
+handler500 = 'ze.views.error_500'
 handler403 = 'ze.views.error_403'
 handler400 = 'ze.views.error_400'
-"""

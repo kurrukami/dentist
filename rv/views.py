@@ -143,29 +143,26 @@ class rv_view(View):
                                 cmnt = cd["cmnt"],
                                 rd_time = date
                                 )
-                                msg = f'your appointment was created in {date}'
+                                msg = f'your appointment was created in  --{date}--'
                                 messages.success(request, msg)
                                 from_me_to_me(msg=msg)
                             else:
-                                msg = f'{cd["doc_name"]} is not one of our doctors'
+                                msg = f'we dont have any doctors with this particuler name {cd["doc_name"]} '
                                 messages.success(request, msg)
                                 from_me_to_me(msg=msg)
 
 
 
                         else:
-                            msg = f'{date.hour}  choosen was not valid, try another hour plz'
+                            msg = f'{date.hour}  this hour is not valid, try another hour plz'
                             messages.success(request, msg)
                             from_me_to_me(msg=msg)
 
 
                     else:
-                        msg = f'{date}  choosen was not valid u son of bitch,its the past'
+                        msg = f'{date}  this date is not valid u son of bitch,its the past'
                         messages.success(request, msg)
                         from_me_to_me(msg=msg)
-
-
-
 
                 else:
                     msg = 'smtg is not valid, plz try again'
@@ -174,7 +171,6 @@ class rv_view(View):
                     return self.get(request, key)
 
         return self.get(request, key)
-
 
 
 class rv_form_view(View):
