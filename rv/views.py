@@ -160,7 +160,7 @@ class rv_view(View):
 
 
                     else:
-                        msg = f'{date}  this date is not valid u son of bitch,its the past'
+                        msg = f'{date}  this date is not valid ,its the past'
                         messages.success(request, msg)
                         from_me_to_me(msg=msg)
 

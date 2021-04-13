@@ -47,7 +47,7 @@ class rv_form_dt(forms.ModelForm):
     year = forms.CharField(label='year', widget=forms.TextInput(attrs={'class':'form_input', 'placeholder':'year'}))
     month = forms.CharField(label='month', widget=forms.TextInput(attrs={'class':'form_input', 'placeholder':'month'}))
     day = forms.CharField(label='day', widget=forms.TextInput(attrs={'class':'form_input', 'placeholder':'day'}))
-    hour = forms.CharField(label='hour', widget=forms.TextInput(attrs={'id = "year" class':'form_input', 'placeholder':'hour'}))
+    hour = forms.CharField(label='hour', widget=forms.TextInput(attrs={'id = "year" class':'form_input', 'placeholder':'enter the hour exp: 15'}))
 
 
 
@@ -59,9 +59,9 @@ class rv_form_dt(forms.ModelForm):
                  ]
         widgets = {
 
-                   'doc_name': forms.TextInput(attrs={'class':'form_input', 'placeholder':'doctor s name'}),
-                   'name': forms.TextInput(attrs={'class':'form_input', 'placeholder':'name'}),
-                   'phone_num': forms.TextInput(attrs={'class':'form_input', 'placeholder':'phone'}),
+                   'doc_name': forms.TextInput(attrs={'class':'form_input', 'placeholder':'enter doctor s name'}),
+                   'name': forms.TextInput(attrs={'class':'form_input', 'placeholder':'enter your name'}),
+                   'phone_num': forms.TextInput(attrs={'class':'form_input', 'placeholder':'enter your phone phone'}),
                    'cmnt': forms.TextInput(attrs={'class':'form_input', 'placeholder':'comment', 'rows' :'1'}),
 
                    #'year': forms.TextInput(attrs={'class':'input is-primary is-medium', 'placeholder':'genre_visite'}),
@@ -81,7 +81,7 @@ class rv_form_tmrw(forms.ModelForm, form_validationn):
     #    choices=doctors
     #)
 
-    hour = forms.CharField(label='hour', widget=forms.TextInput(attrs={'class':'form_input', 'placeholder':'hour'}))
+    hour = forms.CharField(label='hour', widget=forms.TextInput(attrs={'class':'form_input', 'placeholder':'enter the hour exp: 15'}))
 
 
     class Meta:
@@ -92,8 +92,8 @@ class rv_form_tmrw(forms.ModelForm, form_validationn):
                 ]
         widgets = {
                    'doc_name': forms.TextInput(attrs={'class':'form_input', 'placeholder':'doctor s name'}),
-                   'name': forms.TextInput(attrs={'class':'form_input', 'placeholder':'name'}),
-                   'phone_num': forms.TextInput(attrs={'class':'form_input', 'placeholder':'phone'}),
+                   'name': forms.TextInput(attrs={'class':'form_input', 'placeholder':'enter your name'}),
+                   'phone_num': forms.TextInput(attrs={'class':'form_input', 'placeholder':'enter your phone'}),
                    'cmnt': forms.TextInput(attrs={'class':'form_input', 'placeholder':'comment', 'rows' :'1'}),
 
 
